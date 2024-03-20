@@ -1,0 +1,28 @@
+.nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1px;
+}
+
+.nav a {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 5px 5px 5px 10px;
+    border-bottom: 1px solid #a0a6ab;
+    color: #a0a6ab;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.nav a.active {
+    color: white;
+}
+
+.nav .navSvg {
+    margin-right: 5px;
+    color: rgb(200, 160, 14)
+}

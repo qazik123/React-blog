@@ -1,0 +1,11 @@
+
+
+.postsWrapper h1 {
+    margin-top: 0;
+}
+
+.postsWrapper .posts {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}

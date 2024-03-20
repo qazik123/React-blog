@@ -1,0 +1,22 @@
+.logOut-button {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.logOut-button button {
+    font-size: 18px;
+    color: white;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+.logOutSvg {
+    font-size: 22px;
+    margin-right: 5px;
+    color: white;
+    
+}
+
