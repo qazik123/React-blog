@@ -36,9 +36,6 @@ export default function AddFormPost({ setShowAddForm, blogPosts, setBlogPosts })
 		setShowAddForm(false)
 	}
 
-	const editPosts = () => {
-		
-	}
 
 	return (
 		<>
