@@ -13,7 +13,7 @@ export default function Post({
 	deletePost,
 	selectPost,
 }) {
-	const [isLiked, setIsLiked] = React.useState(liked)
+	//const [isLiked, setIsLiked] = React.useState(liked)
 	const customFilling = liked ? 'red' : 'black'
 
 

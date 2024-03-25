@@ -34,7 +34,7 @@ export default function Posts() {
 	}
 
 	// ДОБАВЛЕНИЕ ПОСТА И ЗАПИСЬ В ЛОКАЛ СТОРЕДЖ
-	const addNewPost = () => {}
+	// const addNewPost = () => {}
 
 	// ВИБОР ОТДЕЛЬНОГО ПОСТА И РЕДАКТИРОВАНИЕ ПОСТА
 	const [selectedPost, setSelectedPost] = React.useState({})
