@@ -4,7 +4,10 @@ import MainBlock from './components/MainBlock/MainBlock'
 import React from 'react'
 
 function App() {
-	const [isLoggedIn, setIsLoggedIn] = React.useState(false)
+	const [isLoggedIn, setIsLoggedIn] = React.useState(
+// сохранение данних в локал сторедж
+		localStorage.getItem('isLoggedIn') === 'true'
+	)
 
 	return (
 		<div className='App'>

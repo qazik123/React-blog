@@ -4,6 +4,8 @@ import './LogOut.css'
 
 export default function LogOut({ setIsLoggedIn }) {
 	const logOut = () => {
+// Удаление данних из локал сторедж
+		localStorage.removeItem('isLoggedIn')
 		setIsLoggedIn(false)
 	}
 
