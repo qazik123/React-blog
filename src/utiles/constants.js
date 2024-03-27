@@ -1,5 +1,6 @@
 import postImage from '../images/postImage.jpg'
 
+
 export const POSTS = [
 	{
 		id: 1,
@@ -26,3 +27,5 @@ export const POSTS = [
 		// image: postImage,
 	},
 ]
+
+export const POSTS_URL = 'https://6601c01b9d7276a7555214aa.mockapi.io/posts/';
