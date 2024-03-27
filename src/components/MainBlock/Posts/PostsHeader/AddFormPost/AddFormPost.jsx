@@ -1,9 +1,14 @@
 import React from 'react'
 import './AddFormPost.css'
 import { MdCancel } from 'react-icons/md'
-import {setPostsToLocalStorage} from '../../../../../utiles/helpers.js'
+// import { setPostsToLocalStorage } from '../../../../../utiles/helpers.js'
+import { POSTS_URL } from '../../../../../utiles/constants.js'
 
-export default function AddFormPost({ setShowAddForm, blogPosts, setBlogPosts }) {
+export default function AddFormPost({
+	setShowAddForm,
+	blogPosts,
+	setBlogPosts,
+}) {
 	const [postTitle, setPostTitle] = React.useState('')
 	const [postDescription, setPostDescription] = React.useState('')
 
@@ -19,23 +24,34 @@ export default function AddFormPost({ setShowAddForm, blogPosts, setBlogPosts })
 		e.preventDefault()
 
 		const newPost = {
-			id: blogPosts.length + 1,
+			// id: blogPosts.length + 1,
 			title: postTitle,
 			description: postDescription,
 			liked: false,
+			image: blogPosts[0].image,
 		}
 
-    const updatedPosts = [...blogPosts, newPost]
-    setBlogPosts(updatedPosts)
-    setPostsToLocalStorage(updatedPosts)
-
-		setShowAddForm(false)
+		fetch(POSTS_URL, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(newPost),
+		})
+		.then((res) => res.json())
+		.then((newPostFromServer) => {
+			const updatedPosts = [...blogPosts, newPostFromServer]
+			setBlogPosts(updatedPosts);
+			setShowAddForm(false)
+		})
+		.catch((error) => console.log(error))
 	}
+
+
 
 	const handleAddFormHide = () => {
 		setShowAddForm(false)
 	}
-
 
 	return (
 		<>

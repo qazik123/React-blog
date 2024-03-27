@@ -2,7 +2,10 @@ import React from 'react'
 import './EditFormPost.css'
 import { MdCancel } from 'react-icons/md'
 import { setPostsToLocalStorage } from '../../../../utiles/helpers'
+import { POSTS_URL } from '../../../../utiles/constants'
 // import { setPostsToLocalStorage } from '../../../../../utiles/helpers.js'
+
+
 
 export default function EditFormPost({ setShowEditForm, selectedPost, setBlogPosts, blogPosts }) {
 	const [postTitle, setPostTitle] = React.useState(selectedPost.title)
@@ -18,8 +21,10 @@ export default function EditFormPost({ setShowEditForm, selectedPost, setBlogPos
 		setPostDescription(e.target.value)
 	}
 
-	// редактирование поста и сохранение отредакт поста
 
+
+
+	// редактирование поста и сохранение отредакт поста
 	const editPost = e => {
 		e.preventDefault()
 
@@ -34,18 +39,30 @@ export default function EditFormPost({ setShowEditForm, selectedPost, setBlogPos
 			// liked: selectedPost.liked
 		}
 
-		const updatedPosts = blogPosts.map((post) => {
-			if (post.id === selectedPost.id){
-				return updatedPost
-			}else {
-				return post
-			} 
-		})
+	
 
-		setBlogPosts(updatedPosts)
-		setPostsToLocalStorage(updatedPosts)
-		setShowEditForm(false)
+		//Запрос к API + изменение состояния отредактиров поста
+		fetch(POSTS_URL + selectedPost.id, {
+			method: "PUT",
+			headers: {"Content-Type": "application/json"},
+			body: JSON.stringify(updatedPost)
+		})
+		.then(res => res.json())
+		.then((updatedPostFromServer) => {
+			const updatedPosts = blogPosts.map(post => {
+				if (post.id === updatedPostFromServer.id) {
+					return updatedPostFromServer
+				} else {
+					return post
+				}
+			})
+			setBlogPosts(updatedPosts)
+			setShowEditForm(false)
+		}) 
+		.catch(error => console.log(error))
 	}
+
+
 
 	return (
 		<>
